@@ -1,5 +1,7 @@
 name: Views Date Extra
 type: module
 description: Addes the extra filtering optiionst to thedate type fields.
-package: Custom
-core_version_requirement: ^9 || ^10 || ^11
+package: Date
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:views
