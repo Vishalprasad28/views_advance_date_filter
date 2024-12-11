@@ -36,10 +36,32 @@ trait DateViewsExtraTrait {
     'October 1' => '4th Quarter',
   ];
 
+  protected $quarters_mapping = [
+    'January 1' => '1',
+    'April 1' => '2',
+    'July 1' => '3',
+    'October 1' => '4',
+  ];
+
   protected $filterMappedOperator = [
     'date_year' => 'YEAR',
     'date_month' => 'MONTH',
     'date_quarter' => 'QUARTER',
+  ];
+
+  protected $month_mapping = [
+    'JANUARY' => 1,
+    'FEBRUARY' => 2,
+    'MARCH' => 3,
+    'APRIL' => 4,
+    'MAY' => 5,
+    'JUNE' => 6,
+    'JULY' => 7,
+    'AUGUST' => 8,
+    'SEPTEMBER' => 9,
+    'OCTOBER' => 10,
+    'NOVEMBER' => 11,
+    'DECEMBER' => 12,
   ];
   
   /**

@@ -42,7 +42,7 @@ class ViewsExtraFilterDatetime extends DateTime {
     // If year filter selected.
     if (
       !empty($this->value['type']) && in_array($this->value['type'], array_keys($this->filterMappedOperator)) &&
-      isset($this->value['value']) && is_numeric($this->value['value'])
+      isset($this->value['value'])
     ) {
       $value = ltrim($this->value['value'], '0') ?? '';
       if ($this->value['type'] === 'date_quarter') {
