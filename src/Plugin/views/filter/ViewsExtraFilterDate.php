@@ -3,6 +3,7 @@
 namespace Drupal\views_date_extra\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\views\Plugin\views\filter\Date;
 use Drupal\views_date_extra\Traits\DateViewsExtraTrait;
 
@@ -18,6 +19,7 @@ use Drupal\views_date_extra\Traits\DateViewsExtraTrait;
  */
 class ViewsExtraFilterDate extends Date {
 
+  use StringTranslationTrait;
   use DateViewsExtraTrait;
 
   /**
@@ -42,15 +44,15 @@ class ViewsExtraFilterDate extends Date {
     if (
       !empty($this->value['type']) &&
       in_array($this->value['type'], array_keys($this->filterMappedOperator)) &&
-      isset($this->value['value']) && is_numeric($this->value['value'])
+      isset($this->value['value'])
     ) {
       // Get the value.
       $value = ltrim($this->value['value'], '0') ?? '';
       if ($this->value['type'] === 'date_quarter') {
-        $value = $this->quarters_mapping[$value];
+        $value = $this->quartersMapping[$value];
       }
       elseif ($this->value['type'] === 'date_month') {
-        $value = $this->month_mapping[$value];
+        $value = $this->monthMapping[$value];
       }
       $date_operator = $this->filterMappedOperator[$this->value['type']];
       // In Case of changed, created and published on date is timestamp.
@@ -114,17 +116,17 @@ class ViewsExtraFilterDate extends Date {
         parent::buildExposedForm($form, $form_state);
         $this->applyDatePopupToForm($form);
       }
-      else if ($this->value['type'] == 'date_month') {
+      elseif ($this->value['type'] == 'date_month') {
         $form[$this->options['expose']['identifier']] = [
           '#type' => 'select',
-          '#title' => t('Month'),
+          '#title' => $this->t('Month'),
           '#options' => $this->months,
         ];
       }
-      else if ($this->value['type'] == 'date_quarter') {
+      elseif ($this->value['type'] == 'date_quarter') {
         $form[$this->options['expose']['identifier']] = [
           '#type' => 'select',
-          '#title' => t('Month'),
+          '#title' => $this->t('Month'),
           '#options' => $this->quarters,
         ];
       }

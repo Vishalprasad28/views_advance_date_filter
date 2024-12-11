@@ -11,6 +11,11 @@ trait DateViewsExtraTrait {
 
   use StringTranslationTrait;
 
+  /**
+   * List of months for filtering.
+   *
+   * @var array
+   */
   protected $months = [
     NULL => '-Any-',
     'JANUARY' => 'January',
@@ -25,9 +30,13 @@ trait DateViewsExtraTrait {
     'OCTOBER' => 'October',
     'NOVEMBER' => 'November',
     'DECEMBER' => 'December',
-];
+  ];
 
-
+  /**
+   * List of quarters for filtering.
+   *
+   * @var array
+   */
   protected $quarters = [
     NULL => '-Any-',
     'January 1' => '1st Quarter',
@@ -36,12 +45,49 @@ trait DateViewsExtraTrait {
     'October 1' => '4th Quarter',
   ];
 
+  /**
+   * Mapping of quarters to numeric values.
+   *
+   * @var array
+   */
+  protected $quartersMapping = [
+    'January 1' => '1',
+    'April 1' => '2',
+    'July 1' => '3',
+    'October 1' => '4',
+  ];
+
+  /**
+   * Mapping of filter operators to their SQL equivalents.
+   *
+   * @var array
+   */
   protected $filterMappedOperator = [
     'date_year' => 'YEAR',
     'date_month' => 'MONTH',
     'date_quarter' => 'QUARTER',
   ];
-  
+
+  /**
+   * Mapping of month names to numeric values.
+   *
+   * @var array
+   */
+  protected $monthMapping = [
+    'JANUARY' => 1,
+    'FEBRUARY' => 2,
+    'MARCH' => 3,
+    'APRIL' => 4,
+    'MAY' => 5,
+    'JUNE' => 6,
+    'JULY' => 7,
+    'AUGUST' => 8,
+    'SEPTEMBER' => 9,
+    'OCTOBER' => 10,
+    'NOVEMBER' => 11,
+    'DECEMBER' => 12,
+  ];
+
   /**
    * Apply the HTML5 date popup to the views filter form.
    *
@@ -83,11 +129,11 @@ trait DateViewsExtraTrait {
 
     // Add Bootstrap Datepicker attributes.
     if (isset($this->options['value']['type']) && $this->options['value']['type'] === 'date_year') {
-        // Disable autocomplete widget.
-        $element['#attributes']['autocomplete'] = 'off';
-        // Add class to initiate datepicker.
-        $element['#attributes']['class'][] = 'js-datepicker-years-filter';
-        $element['#attached']['library'][] = 'views_date_extra/datepicker';
+      // Disable autocomplete widget.
+      $element['#attributes']['autocomplete'] = 'off';
+      // Add class to initiate datepicker.
+      $element['#attributes']['class'][] = 'js-datepicker-years-filter';
+      $element['#attached']['library'][] = 'views_date_extra/datepicker';
     }
   }
 
