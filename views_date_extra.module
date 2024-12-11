@@ -11,10 +11,10 @@ use Drupal\Core\Routing\RouteMatchInterface;
  * Implements hook_help().
  */
 function views_date_extra_help($route_name, RouteMatchInterface $route_match) {
-    
+
+  $output = '';
   switch ($route_name) {
     case 'help.page.views_date_extra':
-      $output = '';
       $output = t('<p>The Views Date Extra module extends the capabilities of Drupal Views by providing additional date and datetime field filters. Users can filter data by specific intervals such as months, quarters, or years.</p>
         <h2>Features</h2>
         <ul>
@@ -24,7 +24,7 @@ function views_date_extra_help($route_name, RouteMatchInterface $route_match) {
         </ul>
         <h2>Configuration</h2>
         <p>To use the module, enable it and navigate to the Views UI. Add a filter for a date or datetime field, and you will find new options to filter by month, quarter, or year.</p>');
-    break;
+      break;
   }
 
   return $output;

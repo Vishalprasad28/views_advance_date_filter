@@ -3,9 +3,9 @@
 namespace Drupal\views_date_extra\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\datetime\Plugin\views\filter\Date as DateTime;
 use Drupal\views_date_extra\Traits\DateViewsExtraTrait;
-
 
 /**
  * Date/time views filter.
@@ -19,6 +19,7 @@ use Drupal\views_date_extra\Traits\DateViewsExtraTrait;
  */
 class ViewsExtraFilterDatetime extends DateTime {
 
+  use StringTranslationTrait;
   use DateViewsExtraTrait;
 
   /**
@@ -46,24 +47,24 @@ class ViewsExtraFilterDatetime extends DateTime {
     ) {
       $value = ltrim($this->value['value'], '0') ?? '';
       if ($this->value['type'] === 'date_quarter') {
-        $value = $this->quarters_mapping[$value];
+        $value = $this->quartersMapping[$value];
       }
       elseif ($this->value['type'] === 'date_month') {
-        $value = $this->month_mapping[$value];
+        $value = $this->monthMapping[$value];
       }
       $date_operator = $this->filterMappedOperator[$this->value['type']];
-        // Get the value.
-        // In Case of changed, created and published on date is timestamp.
-        if (
+      // Get the value.
+      // In Case of changed, created and published on date is timestamp.
+      if (
           strpos($field, '.changed') !== FALSE ||
           strpos($field, '.created') !== FALSE ||
           strpos($field, '.published_at') !== FALSE
         ) {
-          $this->query->addWhereExpression($this->options['group'], "$date_operator(FROM_UNIXTIME($field)) $this->operator $value");
-        }
-        else {
-          $this->query->addWhereExpression($this->options['group'], "$date_operator($field) $this->operator $value");
-        }
+        $this->query->addWhereExpression($this->options['group'], "$date_operator(FROM_UNIXTIME($field)) $this->operator $value");
+      }
+      else {
+        $this->query->addWhereExpression($this->options['group'], "$date_operator($field) $this->operator $value");
+      }
     }
     else {
       parent::opSimple($field);
@@ -112,17 +113,17 @@ class ViewsExtraFilterDatetime extends DateTime {
         parent::buildExposedForm($form, $form_state);
         $this->applyDatePopupToForm($form);
       }
-      else if ($this->value['type'] == 'date_month') {
+      elseif ($this->value['type'] == 'date_month') {
         $form[$this->options['expose']['identifier']] = [
           '#type' => 'select',
-          '#title' => t('Month'),
+          '#title' => $this->t('Month'),
           '#options' => $this->months,
         ];
       }
-      else if ($this->value['type'] == 'date_quarter') {
+      elseif ($this->value['type'] == 'date_quarter') {
         $form[$this->options['expose']['identifier']] = [
           '#type' => 'select',
-          '#title' => t('Month'),
+          '#title' => $this->t('Month'),
           '#options' => $this->quarters,
         ];
       }
