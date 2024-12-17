@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provides an automated cron by executing it at the end of a response.
+ * Hook implementations for the views_advance_date_filter module.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;

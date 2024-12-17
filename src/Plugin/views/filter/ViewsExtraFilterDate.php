@@ -5,7 +5,7 @@ namespace Drupal\views_advance_date_filter\Plugin\views\filter;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\views\Plugin\views\filter\Date;
-use Drupal\views_advance_date_filter\Traits\DateViewsExtraTrait;
+use Drupal\views_advance_date_filter\Traits\ViewsDateFilterTrait;
 
 /**
  * Date/time views filter.
@@ -20,7 +20,7 @@ use Drupal\views_advance_date_filter\Traits\DateViewsExtraTrait;
 class ViewsExtraFilterDate extends Date {
 
   use StringTranslationTrait;
-  use DateViewsExtraTrait;
+  use ViewsDateFilterTrait;
 
   /**
    * {@inheritdoc}

@@ -7,7 +7,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 /**
  * Shared code between the YearFilterDate and YearFilterDatetime plugins.
  */
-trait DateViewsExtraTrait {
+trait ViewsDateFilterTrait {
 
   use StringTranslationTrait;
 
