@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\views_date_extra\Plugin\views\filter;
+namespace Drupal\views_advance_date_filter\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\datetime\Plugin\views\filter\Date as DateTime;
-use Drupal\views_date_extra\Traits\DateViewsExtraTrait;
+use Drupal\views_advance_date_filter\Traits\ViewsDateFilterTrait;
 
 /**
  * Date/time views filter.
@@ -20,7 +20,7 @@ use Drupal\views_date_extra\Traits\DateViewsExtraTrait;
 class ViewsExtraFilterDatetime extends DateTime {
 
   use StringTranslationTrait;
-  use DateViewsExtraTrait;
+  use ViewsDateFilterTrait;
 
   /**
    * {@inheritdoc}
@@ -28,11 +28,11 @@ class ViewsExtraFilterDatetime extends DateTime {
   protected function valueForm(&$form, FormStateInterface $form_state) {
     parent::valueForm($form, $form_state);
     if (!$form_state->get('exposed')) {
-      $form['value']['type']['#options']['date_year'] = $this->t('A date in CCYY format.');
-      $form['value']['type']['#options']['date_month'] = $this->t('A date in CCMM format.');
+      $form['value']['type']['#options']['date_year'] = $this->t('A date in YYYY format.');
+      $form['value']['type']['#options']['date_month'] = $this->t('A date in MM format.');
       $form['value']['type']['#options']['date_quarter'] = $this->t('A date in Quarterly format.');
       // Add js to handle year filter state.
-      $form['#attached']['library'][] = 'views_date_extra/year_filter';
+      $form['#attached']['library'][] = 'views_advance_date_filter/year_filter';
     }
   }
 

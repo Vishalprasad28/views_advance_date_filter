@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provides an automated cron by executing it at the end of a response.
+ * Hook implementations for the views_advance_date_filter module.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -10,11 +10,12 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * Implements hook_help().
  */
-function views_date_extra_help($route_name, RouteMatchInterface $route_match) {
+function views_advance_date_filter_help($route_name, RouteMatchInterface $route_match) {
 
   $output = '';
   switch ($route_name) {
-    case 'help.page.views_date_extra':
+    case 'help.page.views_advance_date_filter':
+      $output = '';
       $output = t('<p>The Views Date Extra module extends the capabilities of Drupal Views by providing additional date and datetime field filters. Users can filter data by specific intervals such as months, quarters, or years.</p>
         <h2>Features</h2>
         <ul>

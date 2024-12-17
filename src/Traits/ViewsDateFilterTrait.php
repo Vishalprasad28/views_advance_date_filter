@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\views_date_extra\Traits;
+namespace Drupal\views_advance_date_filter\Traits;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Shared code between the YearFilterDate and YearFilterDatetime plugins.
  */
-trait DateViewsExtraTrait {
+trait ViewsDateFilterTrait {
 
   use StringTranslationTrait;
 
@@ -133,7 +133,7 @@ trait DateViewsExtraTrait {
       $element['#attributes']['autocomplete'] = 'off';
       // Add class to initiate datepicker.
       $element['#attributes']['class'][] = 'js-datepicker-years-filter';
-      $element['#attached']['library'][] = 'views_date_extra/datepicker';
+      $element['#attached']['library'][] = 'views_advance_date_filter/datepicker';
     }
   }
 
