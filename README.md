@@ -1,4 +1,4 @@
-# Views Date Extra
+# Views Advance Date Filter
 
 The `views_advance_date_filter` module extends Drupal's Views functionality by adding advanced filters for fields of type `date` and `datetime`. This module enables users to search and filter content based on specific time such as months, quarters, or years, providing greater flexibility in content organization and display.
 

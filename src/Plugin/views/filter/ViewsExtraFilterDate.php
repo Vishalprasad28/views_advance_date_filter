@@ -28,8 +28,8 @@ class ViewsExtraFilterDate extends Date {
   protected function valueForm(&$form, FormStateInterface $form_state) {
     parent::valueForm($form, $form_state);
     if (!$form_state->get('exposed')) {
-      $form['value']['type']['#options']['date_year'] = $this->t('A date in CCYY format.');
-      $form['value']['type']['#options']['date_month'] = $this->t('A date in CCMM format.');
+      $form['value']['type']['#options']['date_year'] = $this->t('A date in YYYY format.');
+      $form['value']['type']['#options']['date_month'] = $this->t('A date in MM format.');
       $form['value']['type']['#options']['date_quarter'] = $this->t('A date in Quarterly format.');
       // Add js to handle year filter state.
       $form['#attached']['library'][] = 'views_advance_date_filter/year_filter';
