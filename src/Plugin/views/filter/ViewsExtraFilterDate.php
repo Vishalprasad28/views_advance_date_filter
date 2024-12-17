@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\views_date_extra\Plugin\views\filter;
+namespace Drupal\views_advance_date_filter\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\views\Plugin\views\filter\Date;
-use Drupal\views_date_extra\Traits\DateViewsExtraTrait;
+use Drupal\views_advance_date_filter\Traits\DateViewsExtraTrait;
 
 /**
  * Date/time views filter.
@@ -32,7 +32,7 @@ class ViewsExtraFilterDate extends Date {
       $form['value']['type']['#options']['date_month'] = $this->t('A date in CCMM format.');
       $form['value']['type']['#options']['date_quarter'] = $this->t('A date in Quarterly format.');
       // Add js to handle year filter state.
-      $form['#attached']['library'][] = 'views_date_extra/year_filter';
+      $form['#attached']['library'][] = 'views_advance_date_filter/year_filter';
     }
   }
 
